@@ -49,7 +49,67 @@ proyectBtn.addEventListener("click", async e => {
         firstNameContact: firstNameContact.value,
         lastNameContact: lastNameContact.value
     };
-  
+    ipcRenderer.send("new-proyect", proyect);
+  });
+
+  //Functions to add a field
+$(function() {
+  $(document).on('click', '.btn-add-student', function(e) {
+    e.preventDefault();  
+    let dynaForm = $('.dynamic-wrap-student form:first');
+    let currentEntry = $(this).parents('.entry-student:first');
+    let newEntry = $(currentEntry.clone()).appendTo(dynaForm);  
+    newEntry.find('input').val('');
+    dynaForm.find('.entry-student:not(:last) .btn-add-student')
+      .removeClass('btn-add-student').addClass('btn-remove')
+      .removeClass('btn-success').addClass('btn-danger')
+      .html('<i class="fas fa-minus"></i>');
+  }).on('click', '.btn-remove', function(e) {
+    $(this).parents('.entry-student:first').remove();  
+    e.preventDefault();
+    return false;
+  });
+});
+
+$(function() {
+  $(document).on('click', '.btn-add-teacher', function(e) {
+    e.preventDefault();  
+    let dynaForm = $('.dynamic-wrap-teacher form:first');
+    let currentEntry = $(this).parents('.entry-teacher:first');
+    let newEntry = $(currentEntry.clone()).appendTo(dynaForm);  
+    newEntry.find('input').val('');
+    dynaForm.find('.entry-teacher:not(:last) .btn-add-teacher')
+      .removeClass('btn-add-teacher').addClass('btn-remove')
+      .removeClass('btn-success').addClass('btn-danger')
+      .html('<i class="fas fa-minus"></i>');
+  }).on('click', '.btn-remove', function(e) {
+    $(this).parents('.entry-teacher:first').remove();  
+    e.preventDefault();
+    return false;
+  });
+});
+
+$(function() {
+  $(document).on('click', '.btn-list', function(e){
+    e.preventDefault();
+
+    //Student Object Generator
+    const studentEntries = $('.entry-student').map(function(){
+      return [[this.querySelector('.studentName').value, this.querySelector('.studentId').value]]
+    }).get();
+    const studentObjectEntries = Object.assign({}, studentEntries);
+
+    //Teacher Object Generator
+    const teacherEntries = $('.entry-teacher').map(function(){
+      return [[this.querySelector('.teacherName').value, this.querySelector('.teacherId').value, this.querySelector('.teacherSubject').value]]
+    }).get();
+    const teacherObjectEntries = Object.assign({}, teacherEntries);
+
+    console.log(studentObjectEntries);
+    console.log(teacherObjectEntries);
+  } );
+});
+
     if (!updateStatus) {
         ipcRenderer.send("new-proyect", proyect);
         alert("Proyect Created Successfully");
@@ -125,5 +185,3 @@ ipcRenderer.on("update-proyect-success", (e, args) => {
       return t;
     });
   });
-
-  

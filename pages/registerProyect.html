@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="registerProject.css">
     <script>window.$ = window.jQuery = require('jquery');</script>
 </head>
 
@@ -162,44 +163,90 @@
                         </form>
                     </div>
                 </div>
+                <!-- Add in form section  -->
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Datos de los alumnos participantes</p>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="form-row">
+                      <div class="dynamic-wrap-student">
+                        <form role="form" autocomplete="off">
+                          <div class="entry-student input-group">
+                            <div class="form-row"  style="width: 100%;">
                                 <div class="col">
-                                    <div class="form-group"><label for="city"><strong>Nombre del Alumno Participante</strong><br></label><input class="border rounded form-control" type="text" placeholder="nombre.alumno" name="city"></div>
+                                    <div class="form-group">
+                                      <label for="city">
+                                        <strong>Nombre del Alumno Participante</strong>
+                                      </label>
+                                      <input class="border rounded form-control studentName" type="text" placeholder="nombre.alumno" name="city">
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="form-group">
+                                      <label for="city">
+                                        <strong>Numero de Control</strong>
+                                      </label>
+                                      <input class="form-control studentId" type="text" placeholder="numero.control" name="city">
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-group"><label for="city"><strong>Numero de Control</strong></label><input class="form-control" type="text" placeholder="numero.control" name="city"></div>
-                                </div>
+                                  <div class="form-group">
+                                    <div class="input-group-btn" style="margin-top: 2em;">
+                                      <button class="btn btn-success btn-add-student" type="button">
+                                        <i class="fas fa-plus"></i>
+                                      </button>
+                                    </div>
+                                  </div>                                  
+                                </div> 
                             </div>
+                          </div>
                         </form>
+                      </div>
                     </div>
                 </div>
+                <!-- End of add in form section -->
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Datos de los maestros participantes</p>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group"><label for="city"><strong>Nombre del Maestro Participante</strong><br></label><input class="border rounded form-control" type="text" placeholder="nombre.alumno" name="city"></div>
+                      <div class="dynamic-wrap-teacher">
+                        <form role="form" autocomplete="off">
+                          <div class="entry-teacher input-group">
+                            <div class="form-row" style="width: 100%;">
+                                <div class="col-sm">
+                                    <div class="form-group"><label for="city"><strong>Nombre del Maestro Participante</strong><br></label>
+                                      <input class="border rounded form-control teacherName" type="text" placeholder="nombre.maestro" name="city"></div>
                                 </div>
-                                <div class="col">
-                                    <div class="form-group"><label for="city"><strong>Numero de Empleado</strong></label><input class="form-control" type="text" placeholder="numero.control" name="city"></div>
+                                <div class="col-sm">
+                                    <div class="form-group"><label for="city"><strong>Numero de Empleado</strong></label>
+                                      <input class="form-control teacherId" type="text" placeholder="numero.empleado" name="city"></div>
                                 </div>
-                                <div class="col">
-                                    <div class="form-group"><label for="city"><strong>Materia del Maestro</strong><br></label><input class="border rounded form-control" type="text" placeholder="nombre.alumno" name="city"></div>
+                                <div class="col-sm">
+                                    <div class="form-group"><label for="city"><strong>Materia del Maestro</strong><br></label>
+                                      <input class="border rounded form-control teacherSubject" type="text" placeholder="materia.maestro" name="city"></div>
                                 </div>
-                            </div>
-                            <div class="form-group"><button id="proyectBtn" class="btn btn-primary btn-sm" type="submit">Guardar Proyecto</button><button onclick=deleteProyect() id="deleteBtn" class="btn btn-danger btn-sm" type="submit">Eliminar Proyecto</button></div>
+
+                                <div class="col-sm">
+                                  <div class="form-group">
+                                    <div class="input-group-btn" style="margin-top: 2em;">
+                                      <button class="btn btn-success btn-add-teacher" type="button">
+                                        <i class="fas fa-plus"></i>
+                                      </button>
+                                    </div>
+                                  </div>                                  
+                                </div> 
+                            </div>                            
+                          </div>
                         </form>
-                    </div>
+                      </div>                      
+                    </div>    
                 </div>
+                <div class="form-group">
+                  <button id="proyectBtn" class="btn btn-primary btn-sm" type="submit">Guardar Proyecto</button><button onclick=deleteProyect() id="deleteBtn" class="btn btn-danger btn-sm" type="submit">Eliminar Proyecto</button>
+                </div>
+                <button class="btn btn-success btn-list" type="button">Get List</button>
             </div>
         </div>
         <footer class="bg-white sticky-footer">

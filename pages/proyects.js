@@ -2,19 +2,13 @@ const { ipcRenderer } = require("electron");
 
 const dataTable = document.querySelector('#dataTable');
 
-window.onload = function() {
-    updateStatus = false
-    sessionStorage.clear();
-};
+
 
 function sendIdProyect(id) {
     console.log("POR ACTUALIZAR", id);
 
     var idToSend = id;
     sessionStorage.setItem("idToSend", idToSend);
-
-    let statusToSend = true;
-    sessionStorage.setItem("statusToSend", statusToSend);
 
     location.href='registerProyect.html';
 }

@@ -12,9 +12,7 @@ let updateStatus = false;
 let idProyectToUpdate = '';
 
 window.onload = function() {
-    if(idToSend){
-        editProyect();
-    }
+    editProyect();
 };
 
 let proyectsList = [];
@@ -163,7 +161,7 @@ ipcRenderer.on('get-proyects', (e,arg) =>{
     const proyectsReceived = JSON.parse(arg);
     proyects = proyectsReceived;
     proyectsList = proyectsReceived;
-/*     editProyect(proyects); */
+    editProyect(proyects);
 });
 
 ipcRenderer.on("update-proyect-success", (e, args) => {
@@ -184,9 +182,11 @@ ipcRenderer.on("update-proyect-success", (e, args) => {
         t.firstNameContact = updatedProyect.firstNameContact;
         t.lastNameContact = updatedProyect.lastNameContact;
       }
+
       location.href='proyects.html';
       updateStatus = false
       sessionStorage.clear();
+
       return t;
     });
     alert("Proyecto Editado Exitosamente");

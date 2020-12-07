@@ -49,7 +49,8 @@ proyectBtn.addEventListener("click", async e => {
       };
       if (!updateStatus) {
         ipcRenderer.send("new-proyect", proyect);
-        alert("Proyect Created Successfully");
+        alert("Proyecto Creado Exitosamente");
+        location.href='proyects.html';
       } else {
         ipcRenderer.send("update-proyect", { ...proyect, idProyectToUpdate });
       }
@@ -118,14 +119,20 @@ function deleteProyect(){
     const result = confirm('Seguro que desea eliminar el Proyecto actual del sistema?');
     if (result) {
         ipcRenderer.send('delete-proyect', idToSend);
+        location.href='proyects.html';
         sessionStorage.clear();
     }
     return;
 }
 
-function editProyect(){
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+async function editProyect(){
     updateStatus = true;
     idProyectToUpdate = idToSend;
+    await sleep(100);
     const proyect = proyects.find(proyect => proyect._id === idProyectToUpdate);
     proyectName.value = proyect.proyectName;
     releaseDate.value = proyect.releaseDate;
@@ -175,6 +182,12 @@ ipcRenderer.on("update-proyect-success", (e, args) => {
         t.firstNameContact = updatedProyect.firstNameContact;
         t.lastNameContact = updatedProyect.lastNameContact;
       }
+
+      location.href='proyects.html';
+      updateStatus = false
+      sessionStorage.clear();
+
       return t;
     });
+    alert("Proyecto Editado Exitosamente");
   });

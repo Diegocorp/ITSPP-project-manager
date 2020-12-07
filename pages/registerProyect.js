@@ -48,8 +48,13 @@ proyectBtn.addEventListener("click", async e => {
         enterpriseContact: enterpriseContact.value,
         firstNameContact: firstNameContact.value,
         lastNameContact: lastNameContact.value
-    };
-    ipcRenderer.send("new-proyect", proyect);
+      };
+      if (!updateStatus) {
+        ipcRenderer.send("new-proyect", proyect);
+        alert("Proyect Created Successfully");
+      } else {
+        ipcRenderer.send("update-proyect", { ...proyect, idProyectToUpdate });
+      }
   });
 
   //Functions to add a field
@@ -110,14 +115,6 @@ $(function() {
   } );
 });
 
-    if (!updateStatus) {
-        ipcRenderer.send("new-proyect", proyect);
-        alert("Proyect Created Successfully");
-    } else {
-        ipcRenderer.send("update-proyect", { ...proyect, idProyectToUpdate });
-    }
-
-});
   
 function deleteProyect(){
     const result = confirm('Seguro que desea eliminar el Proyecto actual del sistema?');

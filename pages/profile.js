@@ -1,11 +1,5 @@
 const { ipcRenderer } = require("electron");
 
-
-window.onload = function() {
-    updateStatus = false
-    sessionStorage.clear();
-};
-
 const profileBtn = document.querySelector("#profileBtn");
 const userName = document.querySelector("#userName");
 const email = document.querySelector("#email");

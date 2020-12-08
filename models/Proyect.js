@@ -48,6 +48,14 @@ const newProyectSchema = new Schema({
   lastNameContact: {
     type: String,
     required: true
+  },
+  studentMember: {
+    type: Object,
+    required: true
+  },
+  teacherMember: {
+    type: Object,
+    required: true
   }
 })
 

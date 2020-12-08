@@ -2,7 +2,10 @@ const { ipcRenderer } = require("electron");
 
 const dataTable = document.querySelector('#dataTable');
 
-
+window.onload = function() {
+    updateStatus = false
+    sessionStorage.clear();
+};
 
 function sendIdProyect(id) {
     console.log("POR ACTUALIZAR", id);

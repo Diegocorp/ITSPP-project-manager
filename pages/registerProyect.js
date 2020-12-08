@@ -12,10 +12,13 @@ let updateStatus = false;
 let idProyectToUpdate = '';
 
 window.onload = function() {
+  if (idToSend) {
     editProyect();
+  }
 };
 
 let proyectsList = [];
+
 
 const proyectName = document.querySelector("#proyectName");
 const releaseDate = document.querySelector("#releaseDate");
@@ -33,6 +36,17 @@ const lastNameContact = document.querySelector("#lastNameContact");
 proyectBtn.addEventListener("click", async e => {
     e.preventDefault();
 
+    const studentEntries = $('.entry-student').map(function(){
+      return [[this.querySelector('.studentName').value, this.querySelector('.studentId').value]]
+    }).get();
+    const studentObjectEntries = Object.assign({}, studentEntries);
+
+    //Teacher Object Generator
+    const teacherEntries = $('.entry-teacher').map(function(){
+      return [[this.querySelector('.teacherName').value, this.querySelector('.teacherId').value, this.querySelector('.teacherSubject').value]]
+    }).get();
+    const teacherObjectEntries = Object.assign({}, teacherEntries);
+
     const proyect = {
         proyectName: proyectName.value,
         releaseDate: releaseDate.value,
@@ -45,11 +59,15 @@ proyectBtn.addEventListener("click", async e => {
         enterpriseProject: enterpriseProject.value,
         enterpriseContact: enterpriseContact.value,
         firstNameContact: firstNameContact.value,
-        lastNameContact: lastNameContact.value
+        lastNameContact: lastNameContact.value,
+        studentMember: studentObjectEntries,
+        teacherMember: teacherObjectEntries
       };
       if (!updateStatus) {
         ipcRenderer.send("new-proyect", proyect);
         alert("Proyecto Creado Exitosamente");
+        updateStatus = false
+        sessionStorage.clear();
         location.href='proyects.html';
       } else {
         ipcRenderer.send("update-proyect", { ...proyect, idProyectToUpdate });
@@ -93,10 +111,7 @@ $(function() {
   });
 });
 
-$(function() {
-  $(document).on('click', '.btn-list', function(e){
-    e.preventDefault();
-
+/* function projectMembers() {
     //Student Object Generator
     const studentEntries = $('.entry-student').map(function(){
       return [[this.querySelector('.studentName').value, this.querySelector('.studentId').value]]
@@ -111,8 +126,7 @@ $(function() {
 
     console.log(studentObjectEntries);
     console.log(teacherObjectEntries);
-  } );
-});
+} */
 
   
 function deleteProyect(){
@@ -146,6 +160,26 @@ async function editProyect(){
     enterpriseContact.value = proyect.enterpriseContact;
     firstNameContact.value = proyect.firstNameContact;
     lastNameContact.value = proyect.lastNameContact;
+    for (let index = 0; index < Object.keys(proyect.studentMember).length; index++) {
+      let fields= $(".studentName");
+      let j = 0;
+      fields.each(function (i) {
+        $(this).val(proyect.studentMember[index][j]);
+        console.log(proyect.studentMember[index][j]);
+        j++;
+      });
+      $(".btn-add-student").trigger("click");
+    }
+    for (let index = 0; index < Object.keys(proyect.teacherMember).length; index++) {
+      let fields= $(".teacherName");
+      let j = 0;
+      fields.each(function (i) {
+        $(this).val(proyect.teacherMember[index][j]);
+        console.log(proyect.teacherMember[index][j]);
+        j++;
+      });
+      $(".btn-add-teacher").trigger("click");
+    }
 }
 
 
@@ -161,7 +195,6 @@ ipcRenderer.on('get-proyects', (e,arg) =>{
     const proyectsReceived = JSON.parse(arg);
     proyects = proyectsReceived;
     proyectsList = proyectsReceived;
-    editProyect(proyects);
 });
 
 ipcRenderer.on("update-proyect-success", (e, args) => {
@@ -181,6 +214,8 @@ ipcRenderer.on("update-proyect-success", (e, args) => {
         t.enterpriseContact = updatedProyect.enterpriseContact;
         t.firstNameContact = updatedProyect.firstNameContact;
         t.lastNameContact = updatedProyect.lastNameContact;
+        t.studentMember = updatedProyect.studentMember;
+        t.teacherMember = updatedProyect.studentMember;
       }
 
       location.href='proyects.html';

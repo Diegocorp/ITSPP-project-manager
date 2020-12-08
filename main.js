@@ -84,6 +84,8 @@ ipcMain.on("update-proyect", async (e, args) => {
       enterpriseContact: args.enterpriseContact,
       firstNameContact: args.firstNameContact,
       lastNameContact: args.lastNameContact,
+      studentMember: args.studentMember,
+      teacherMember: args.teacherMember
     },
     { new: true }
   );

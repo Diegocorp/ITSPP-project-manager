@@ -160,11 +160,26 @@ async function editProyect(){
     enterpriseContact.value = proyect.enterpriseContact;
     firstNameContact.value = proyect.firstNameContact;
     lastNameContact.value = proyect.lastNameContact;
-
-
-
-
-    
+    for (let index = 0; index < Object.keys(proyect.studentMember).length; index++) {
+      let fields= $(".studentName");
+      let j = 0;
+      fields.each(function (i) {
+        $(this).val(proyect.studentMember[index][j]);
+        console.log(proyect.studentMember[index][j]);
+        j++;
+      });
+      $(".btn-add-student").trigger("click");
+    }
+    for (let index = 0; index < Object.keys(proyect.teacherMember).length; index++) {
+      let fields= $(".teacherName");
+      let j = 0;
+      fields.each(function (i) {
+        $(this).val(proyect.teacherMember[index][j]);
+        console.log(proyect.teacherMember[index][j]);
+        j++;
+      });
+      $(".btn-add-teacher").trigger("click");
+    }
 }
 
 
@@ -199,6 +214,8 @@ ipcRenderer.on("update-proyect-success", (e, args) => {
         t.enterpriseContact = updatedProyect.enterpriseContact;
         t.firstNameContact = updatedProyect.firstNameContact;
         t.lastNameContact = updatedProyect.lastNameContact;
+        t.studentMember = updatedProyect.studentMember;
+        t.teacherMember = updatedProyect.studentMember;
       }
 
       location.href='proyects.html';

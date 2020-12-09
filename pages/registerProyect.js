@@ -144,42 +144,46 @@ async function editProyect(){
     lastNameContact.value = proyect.lastNameContact;
 
     //studen list fields    
-    let dynaForm = $('.dynamic-wrap-student form:first');
-    let currentEntry = $('.entry-student:first');
+    let dynaFormStudent = $('.dynamic-wrap-student form:first');
+    let currentEntryStudent = $('.entry-student:first');
     for (let index = 0; index < Object.keys(proyect.studentMember).length; index++) {
       if(proyect.studentMember != false && index < Object.keys(proyect.studentMember).length - 1){
-          let newEntry = $(currentEntry.clone()).appendTo(dynaForm);  
+          let newEntry = $(currentEntryStudent.clone()).appendTo(dynaFormStudent);  
           newEntry.find('input').val('');
       }
     }
     $('.entry-student').each(function(index){
         proyect.studentMember[index] ? $(this).find('input:first').val(proyect.studentMember[index][0]) : null; 
         proyect.studentMember[index] ? $(this).find('input:not(:first)').val(proyect.studentMember[index][1]) : null; 
-        dynaForm.find('.entry-student:not(:last) .btn-add-student')
+        dynaFormStudent.find('.entry-student:not(:last) .btn-add-student')
         .removeClass('btn-add-student').addClass('btn-remove')
         .removeClass('btn-success').addClass('btn-danger')
         .html('<i class="fas fa-minus"></i>');
     });
 
     //teacher list fields
-    // for (let index = 0; index < Object.keys(proyect.teacherMember).length; index++) {
-    //   let fields= $(".teacherName");
-    //   let j = 0;
-    //   fields.each(function (i) {
-    //     $(this).val(proyect.teacherMember[index][j]);
-    //     console.log(proyect.teacherMember[index][j]);
-    //     j++;
-    //   });
-    //   $(".btn-add-teacher").trigger("click");
-    // }
+    let dynaFormTeacher = $('.dynamic-wrap-teacher form:first');
+    let currentEntryTeacher = $('.entry-teacher:first');
+    for (let index = 0; index < Object.keys(proyect.teacherMember).length; index++) {
+      if(proyect.teacherMember != false && index < Object.keys(proyect.teacherMember).length - 1){
+          let newEntry = $(currentEntryTeacher.clone()).appendTo(dynaFormTeacher);  
+          newEntry.find('input').val('');
+      }
+    }
+    $('.entry-teacher').each(function(index){
+        proyect.teacherMember[index] ? $(this).find('input:first').val(proyect.teacherMember[index][0]) : null; 
+        proyect.teacherMember[index] ? $(this).find('.teacherId').val(proyect.teacherMember[index][1]) : null; 
+        proyect.teacherMember[index] ? $(this).find('input:last').val(proyect.teacherMember[index][2]) : null; 
+        dynaFormTeacher.find('.entry-teacher:not(:last) .btn-add-teacher')
+        .removeClass('btn-add-teacher').addClass('btn-remove')
+        .removeClass('btn-success').addClass('btn-danger')
+        .html('<i class="fas fa-minus"></i>');
+    });
 }
-
 
 ipcRenderer.on('delete-proyect-success', (e,arg) => {
     const deletedProyect = JSON.parse(arg);
-    
 })
-
 
 ipcRenderer.send('get-proyects');
 

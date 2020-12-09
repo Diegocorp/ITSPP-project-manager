@@ -110,24 +110,6 @@ $(function() {
     return false;
   });
 });
-
-/* function projectMembers() {
-    //Student Object Generator
-    const studentEntries = $('.entry-student').map(function(){
-      return [[this.querySelector('.studentName').value, this.querySelector('.studentId').value]]
-    }).get();
-    const studentObjectEntries = Object.assign({}, studentEntries);
-
-    //Teacher Object Generator
-    const teacherEntries = $('.entry-teacher').map(function(){
-      return [[this.querySelector('.teacherName').value, this.querySelector('.teacherId').value, this.querySelector('.teacherSubject').value]]
-    }).get();
-    const teacherObjectEntries = Object.assign({}, teacherEntries);
-
-    console.log(studentObjectEntries);
-    console.log(teacherObjectEntries);
-} */
-
   
 function deleteProyect(){
     const result = confirm('Seguro que desea eliminar el Proyecto actual del sistema?');
@@ -146,7 +128,7 @@ function sleep(ms) {
 async function editProyect(){
     updateStatus = true;
     idProyectToUpdate = idToSend;
-    await sleep(100);
+    await sleep(300);
     const proyect = proyects.find(proyect => proyect._id === idProyectToUpdate);
     proyectName.value = proyect.proyectName;
     releaseDate.value = proyect.releaseDate;
@@ -160,26 +142,36 @@ async function editProyect(){
     enterpriseContact.value = proyect.enterpriseContact;
     firstNameContact.value = proyect.firstNameContact;
     lastNameContact.value = proyect.lastNameContact;
+
+    //studen list fields    
+    let dynaForm = $('.dynamic-wrap-student form:first');
+    let currentEntry = $('.entry-student:first');
     for (let index = 0; index < Object.keys(proyect.studentMember).length; index++) {
-      let fields= $(".studentName");
-      let j = 0;
-      fields.each(function (i) {
-        $(this).val(proyect.studentMember[index][j]);
-        console.log(proyect.studentMember[index][j]);
-        j++;
-      });
-      $(".btn-add-student").trigger("click");
+      if(proyect.studentMember != false && index < Object.keys(proyect.studentMember).length - 1){
+          let newEntry = $(currentEntry.clone()).appendTo(dynaForm);  
+          newEntry.find('input').val('');
+      }
     }
-    for (let index = 0; index < Object.keys(proyect.teacherMember).length; index++) {
-      let fields= $(".teacherName");
-      let j = 0;
-      fields.each(function (i) {
-        $(this).val(proyect.teacherMember[index][j]);
-        console.log(proyect.teacherMember[index][j]);
-        j++;
-      });
-      $(".btn-add-teacher").trigger("click");
-    }
+    $('.entry-student').each(function(index){
+        proyect.studentMember[index] ? $(this).find('input:first').val(proyect.studentMember[index][0]) : null; 
+        proyect.studentMember[index] ? $(this).find('input:not(:first)').val(proyect.studentMember[index][1]) : null; 
+        dynaForm.find('.entry-student:not(:last) .btn-add-student')
+        .removeClass('btn-add-student').addClass('btn-remove')
+        .removeClass('btn-success').addClass('btn-danger')
+        .html('<i class="fas fa-minus"></i>');
+    });
+
+    //teacher list fields
+    // for (let index = 0; index < Object.keys(proyect.teacherMember).length; index++) {
+    //   let fields= $(".teacherName");
+    //   let j = 0;
+    //   fields.each(function (i) {
+    //     $(this).val(proyect.teacherMember[index][j]);
+    //     console.log(proyect.teacherMember[index][j]);
+    //     j++;
+    //   });
+    //   $(".btn-add-teacher").trigger("click");
+    // }
 }
 
 

@@ -9,6 +9,7 @@ const { ipcRenderer } = require("electron");
 window.onload = function() {
     updateStatus = false
     sessionStorage.removeItem('idToSend');
+    localStorage.removeItem('guest');
 };
 
 const email = document.querySelector("#inputEmail");

@@ -33,13 +33,14 @@ function renderProyects(proyects){
     ],
     "columnDefs": [
       { 
-        "width": "8rem", 
+        "width": "10%", 
         "targets": [0,1,2,3,4,5] 
       },
       {
         "targets": [ 6 ],
         "visible": false,
         "searchable": false,
+        "width": "1px"
       }
     ],
     "scrollX": true

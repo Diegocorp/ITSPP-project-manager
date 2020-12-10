@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="profile.css">
     <script>window.$ = window.jQuery = require('jquery');</script>
 </head>
 
@@ -16,7 +17,7 @@
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand text-justify d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+                    <div class="sidebar-brand-icon rotate-n-0"><img id="iconSup" src=".\assets\img\tecnm\tecnm-1.png" alt=""></div>
                     <div class="sidebar-brand-text mx-3"><span>GPI</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -79,7 +80,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span id="nickName" class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img class="border rounded-circle img-profile" src="assets/img/dogs/image2.jpeg"></a>
                                     <div
                                         class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="profile.html"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
                                         <a
@@ -158,37 +159,45 @@
                             <div class="col">
                                 <div class="card shadow mb-3">
                                     <div class="card-header py-3">
-                                        <p class="text-primary m-0 font-weight-bold">Configuracion de Usurio</p>
+                                        <p class="text-primary m-0 font-weight-bold">Configuracion de Usuario</p>
                                     </div>
                                     <div class="card-body">
                                         <form>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="username"><strong>Nombre de Usuario</strong></label><input id="userName" class="form-control" type="text" placeholder="user.name" name="username"></div>
+                                                    <div class="form-group"><label for="username"><strong>Nombre de Usuario</strong></label><input id="userName" class="form-control" type="text" placeholder="Nombre de Usuario" name="username"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="email"><strong>Correo Electronico</strong></label><input id="email" class="form-control" type="email" placeholder="user@example.com" name="email"></div>
+                                                    <div class="form-group"><label for="email"><strong>Correo Electronico</strong></label><input id="email" class="form-control" type="email" placeholder="Correo Electronico" name="email"></div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="first_name"><strong>Nombre(s)</strong></label><input id="firstName" class="form-control" type="text" placeholder="John" name="first_name"></div>
+                                                    <div class="form-group"><label for="first_name"><strong>Nombre(s)</strong></label><input id="firstName" class="form-control" type="text" placeholder="Nombre(s)" name="first_name"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="last_name"><strong>Apellido(s)</strong></label><input id="lastName" class="form-control" type="text" placeholder="Doe" name="last_name"></div>
+                                                    <div class="form-group"><label for="last_name"><strong>Apellido(s)</strong></label><input id="lastName" class="form-control" type="text" placeholder="Apellido(s)" name="last_name"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group"><label for="first_name"><strong>Contraseña</strong></label><input id="password" class="form-control" type="text" placeholder="Contraseña" name="first_name"></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group"><label for="last_name"><strong>Repetir Contraseña</strong></label><input id="repeatPassword" class="form-control" type="text" placeholder="Repetir Contraseña" name="last_name"></div>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-body">
                                         <form>
-                                            <div class="form-group"><label for="address"><strong>Academia</strong></label><input id="academy" class="form-control" type="text" placeholder="nombre.academia" name="address"></div>
+                                            <div class="form-group"><label for="address"><strong>Academia</strong></label><input id="academy" class="form-control" type="text" placeholder="Academia" name="address"></div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="city"><strong>Numero de Empleado</strong></label><input id="employeeNumber" class="form-control" type="text" placeholder="numero.empleado" name="city"></div>
+                                                    <div class="form-group"><label for="city"><strong>Numero de Empleado</strong></label><input id="employeeNumber" class="form-control" type="text" placeholder="Numero de Empleado" name="city"></div>
                                                 </div>
                                             </div>
-                                            <div class="form-group"><button id="profileBtn" class="btn btn-primary btn-sm" type="button">Guardar Configuracion</button></div>
+                                            <div class="form-group"><button id="profileBtn" onclick="updateProfile()" class="btn btn-primary btn-sm" type="button">Guardar Configuracion</button></div>
                                         </form>
                                     </div>
                                 </div>

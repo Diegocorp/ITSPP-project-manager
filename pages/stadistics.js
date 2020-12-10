@@ -2,8 +2,12 @@ const { ipcRenderer } = require("electron");
 
 window.onload = function() {
     updateStatus = false
-    sessionStorage.clear();
+    sessionStorage.removeItem('idToSend');
 };
+
+const nickName = sessionStorage.getItem("nickName");
+
+document.querySelector("#nickName").innerHTML = nickName;
 
 let cancel = 0, develop = 0, finish = 0, implement = 0;
 let dds = 0, pt = 0, st = 0;

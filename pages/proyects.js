@@ -1,10 +1,15 @@
 const { ipcRenderer } = require("electron");
 
+
+const nickName = sessionStorage.getItem("nickName");
+
+document.querySelector("#nickName").innerHTML = nickName;
+
 const dataTable = document.querySelector('#dataTable');
 
 window.onload = function() {
     updateStatus = false
-    sessionStorage.clear();
+    sessionStorage.removeItem('idToSend');
 };
 
 function sendIdProyect(id) {

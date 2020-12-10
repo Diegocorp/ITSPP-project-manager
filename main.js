@@ -7,14 +7,14 @@ const Proyect = require("./models/Proyect");
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1920,
+    height: 1080,
     webPreferences: {
       nodeIntegration: true, 
       preload: path.join(__dirname, 'preload.js')
     }
   })
-
+  mainWindow.setMenuBarVisibility(false)
   // and load the index.html of the app.
   mainWindow.loadFile('pages/stadistics.html')
 
@@ -46,6 +46,7 @@ app.on('window-all-closed', function () {
 // Task
 
 ipcMain.on("new-user", async (e, arg) => {
+  console.log(arg);
   const newUser = new User(arg);
   const userSaved = await newUser.save();
   e.reply("new-user-created", JSON.stringify(userSaved));
@@ -60,6 +61,11 @@ ipcMain.on("new-proyect", async (e, arg) => {
 ipcMain.on("get-proyects", async (e, arg) => {
   const proyects = await Proyect.find();
   e.reply("get-proyects", JSON.stringify(proyects));
+});
+
+ipcMain.on("get-users", async (e, arg) => {
+  const users = await User.find();
+  e.reply("get-users", JSON.stringify(users));
 });
 
 ipcMain.on("delete-proyect", async (e, args) => {
@@ -90,6 +96,24 @@ ipcMain.on("update-proyect", async (e, args) => {
     { new: true }
   );
   e.reply("update-proyect-success", JSON.stringify(updatedProyect));
+});
+
+ipcMain.on("update-user", async (e, args) => {
+  console.log(args);
+  const updatedUser = await User.findByIdAndUpdate(
+    args.idSesionToUpdate,
+    { 
+      userName: args.userName, 
+      email: args.email,
+      firstName: args.firstName,
+      lastName: args.lastName,
+      password: args.password,
+      academy: args.academy,
+      employeeNumber: args.employeeNumber,
+    },
+    { new: true }
+  );
+  e.reply("update-user-success", JSON.stringify(updatedUser));
 });
 
 module.exports = { createWindow };

@@ -89,6 +89,7 @@ const createBtn = $('#createBtn');
 const profileBtn = $('#profileBtn');
 
 if(localStorage.getItem('guest') !== null){
+  document.querySelector("#nickName").innerHTML = "Invitado";
   profileBtn.hide();
   createBtn.hide();
   $('.dropdown-menu > .dropdown-item:not(:last)').each(function(){

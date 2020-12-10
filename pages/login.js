@@ -3,6 +3,7 @@ $(function() {
     localStorage.setItem('guest', true);
   })
 });
+
 const { ipcRenderer } = require("electron");
 
 window.onload = function() {

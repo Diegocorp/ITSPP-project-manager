@@ -13,16 +13,16 @@
 </head>
 
 <body class="bg-gradient-primary">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-9 col-lg-12 col-xl-10">
                 <div class="card shadow-lg o-hidden border-0 my-5">
                     <div class="card-body p-0">
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-flex">
+                            <div class="col-lg-4 d-none d-lg-flex">
                                 <img id="iconSup" src=".\assets\img\tecnm\tecnm-1.png" alt="">
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h4 class="text-dark mb-4">¡Bienvenido!</h4>
@@ -34,13 +34,23 @@
                                             <div class="custom-control custom-checkbox small">
                                                 <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Recordar sesion</label></div>
                                             </div>
-                                        </div><a class="btn btn-primary btn-block text-white btn-user" onclick="validationUsers()" role="button">Entrar</a>
+                                        </div><a id="login" class="btn btn-primary btn-block text-white btn-user" onclick="validationUsers()" role="button">Entrar</a>
                                         <hr>
                                         <hr>
                                     </form>
                                     <div class="text-center"><a class="small" href="forgot-password.html">¿Olvidaste tu contraseña?</a></div>
                                     <div class="text-center"><a class="small" href="register.html">Crear una cuenta</a></div>
                                 </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <div class="p-5">
+                                <div class="text-center">
+                                    <h4 class="text-dark mb-4">¡Entrar como huesped!</h4>
+                                </div>
+                                <form class="user">
+                                    <a id="guestBtn" class="btn btn-primary btn-block text-white btn-user" role="button" href="stadistics.html">Entrar</a>
+                                </form>
+                              </div>
                             </div>
                         </div>
                     </div>

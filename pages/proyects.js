@@ -83,3 +83,27 @@ ipcRenderer.on('get-proyects', (e,arg) =>{
     proyects = proyectsReceived;
     renderProyects(proyects);
 });
+
+//Guest rights
+const createBtn = $('#createBtn');
+const profileBtn = $('#profileBtn');
+
+if(localStorage.getItem('guest') !== null){
+  profileBtn.hide();
+  createBtn.hide();
+  $('.dropdown-menu > .dropdown-item:not(:last)').each(function(){
+    $(this).hide();
+  });
+
+  $('.dropdown-divider').hide();
+}else{
+  profileBtn.show();
+  createBtn.show();
+}
+
+$(function() {
+  $(document).on('click', '#logoutBtn', function() {
+    localStorage.removeItem('guest');
+    console.log(localStorage.getItem('guest'));
+  })
+});

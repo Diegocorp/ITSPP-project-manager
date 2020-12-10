@@ -33,6 +33,8 @@ $(document).ready(function(){
 
 let proyects = [];
 
+//render tables
+
 function renderProyects(proyects){
     dataTable.innerHTML = '';
     let table = `

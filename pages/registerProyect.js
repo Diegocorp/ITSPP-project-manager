@@ -1,5 +1,10 @@
 const { ipcRenderer } = require("electron");
 
+
+const nickName = sessionStorage.getItem("nickName");
+
+document.querySelector("#nickName").innerHTML = nickName;
+
 const proyectBtn = document.querySelector("#proyectBtn");
 const deleteBtn = document.querySelector("#deleteBtn");
 
@@ -67,7 +72,7 @@ proyectBtn.addEventListener("click", async e => {
         ipcRenderer.send("new-proyect", proyect);
         alert("Proyecto Creado Exitosamente");
         updateStatus = false
-        sessionStorage.clear();
+        sessionStorage.removeItem('idToSend');
         location.href='proyects.html';
       } else {
         ipcRenderer.send("update-proyect", { ...proyect, idProyectToUpdate });
@@ -116,7 +121,7 @@ function deleteProyect(){
     if (result) {
         ipcRenderer.send('delete-proyect', idToSend);
         location.href='proyects.html';
-        sessionStorage.clear();
+        sessionStorage.removeItem('idToSend');
     }
     return;
 }
@@ -216,7 +221,7 @@ ipcRenderer.on("update-proyect-success", (e, args) => {
 
       location.href='proyects.html';
       updateStatus = false
-      sessionStorage.clear();
+      sessionStorage.removeItem('idToSend');
 
       return t;
     });

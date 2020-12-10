@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="register.css">
     <script>window.$ = window.jQuery = require('jquery');</script>
 </head>
 
@@ -17,28 +18,33 @@
             <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
-                        <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;assets/img/dogs/image2.jpeg&quot;);"></div>
+                        <img id="iconSup" src=".\assets\img\tecnm\tecnm-1.png" alt="">
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h4 class="text-dark mb-4">¡Crea una cuenta!</h4>
+                                <h4 class="text-dark mb-4">Registro</h4>
                             </div>
                             <form class="user">
+                                <div class="form-group"><input class="form-control form-control-user" type="email" id="userName" aria-describedby="emailHelp" placeholder="Nombre de usuario" name="email"></div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="Nombre de pila" name="first_name"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="Apellido" name="last_name"></div>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="firstName" placeholder="Nombre(s)" name="first_name"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="lastName" placeholder="Apellido(s)" name="last_name"></div>
                                 </div>
-                                <div class="form-group"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Correo electrónico" name="email"></div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Contraseña" name="password"></div>
-                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Reingresar contraseña" name="password_repeat"></div>
-                                </div><button class="btn btn-primary btn-block text-white btn-user" type="submit">Crear Cuenta</button>
-                                <hr><a class="btn btn-primary btn-block text-white btn-google btn-user" role="button"><i class="fab fa-google"></i>&nbsp; Regístrate con Google</a><a class="btn btn-primary btn-block text-white btn-facebook btn-user" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Regístrate con Facebook</a>
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="academy" placeholder="Academia" name="first_name"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="employeeNumber" placeholder="Numero de empleado" name="last_name"></div>
+                                </div>
+                                <div class="form-group"><input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Correo Electronico" name="email"></div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="password" placeholder="Contraseña" name="password"></div>
+                                    <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="repeatPassword" placeholder="Repetir Contraseña" name="password_repeat"></div>
+                                </div>
+                                <input class="form-control form-control-user" type="email" id="securityCode" aria-describedby="emailHelp" placeholder="Codigo de seguridad" name="email">
                                 <hr>
-                            </form>
-                            <div class="text-center"><a class="small" href="forgot-password.html">¿Olvidasté tu contraseña?</a></div>
-                            <div class="text-center"><a class="small" href="login.html">¿Ya tienes una cuenta? ¡Ingresa!</a></div>
+                            </form><button class="btn btn-primary btn-block text-white btn-user" id="registerBtn" type="button">Registrar cuenta</button>
+                            <div class="text-center"></div>
+                            <div class="text-center"><a class="small" href="login.html">Ya tienes una cuenta? Inicia sesion!</a></div>
                         </div>
                     </div>
                 </div>
@@ -51,6 +57,7 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="register.js"></script>
 </body>
 
 </html>

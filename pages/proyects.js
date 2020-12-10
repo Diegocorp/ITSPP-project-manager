@@ -1,11 +1,8 @@
 const { ipcRenderer } = require("electron");
 
-
 const nickName = sessionStorage.getItem("nickName");
 
 document.querySelector("#nickName").innerHTML = nickName;
-
-const dataTable = document.querySelector('#dataTable');
 
 window.onload = function() {
     updateStatus = false
@@ -14,61 +11,43 @@ window.onload = function() {
 
 function sendIdProyect(id) {
     console.log("POR ACTUALIZAR", id);
-
     var idToSend = id;
     sessionStorage.setItem("idToSend", idToSend);
-
     location.href='registerProyect.html';
 }
-
-
-$(document).ready(function(){
-    $("#searchInput").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#dataTable tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
 
 let proyects = [];
 
 //render tables
-
 function renderProyects(proyects){
-    dataTable.innerHTML = '';
-    let table = `
-        <table class="table dataTable my-0 table-hover" id="dataTable">
-        <thead>
-            <tr>
-                <th>Proyecto</th>
-                <th>Fecha de inicio</th>
-                <th>Tipo de proyecto</th>
-                <th>Empresa</th>
-                <th>Objetivo</th>
-                <th>Estatus</th>
-            </tr>
-        </thead>
-        <tbody>
-    
-    `;
-    proyects.map(t => {
-        table = table +
-        `<tr onclick="sendIdProyect('${t._id}')">
-          <td>${t.proyectName}</td>
-          <td>${t.startDate}</td>
-          <td>${t.typeProyect}</td>
-          <td>${t.enterpriseProject}</td>
-          <td>${t.objectiveProject}</td>
-          <td>${t.statusProject}</td>
-         </tr>`
-    })
-        table = table +
-    `</tbody>
-    </table>`
-    ;
-
-    dataTable.innerHTML = table;
+  const table = $('#table_id').DataTable({    
+    data: proyects,
+    columns:[
+      { data: 'proyectName' },
+      { data: 'startDate' },
+      { data: 'typeProyect' },
+      { data: 'enterpriseProject' },
+      { data: 'objectiveProject' },
+      { data: 'statusProject' },
+      { data: '_id'},
+    ],
+    "columnDefs": [
+      { 
+        "width": "8rem", 
+        "targets": [0,1,2,3,4,5] 
+      },
+      {
+        "targets": [ 6 ],
+        "visible": false,
+        "searchable": false,
+      }
+    ],
+    "scrollX": true
+  });
+  $('#table_id tbody').on('click', 'tr', function () {
+    var rowData = table.row( this ).data();
+    sendIdProyect(rowData._id);
+} );
 }
 
 ipcRenderer.on("new-task-created", (e, arg) => {

@@ -3,3 +3,7 @@
     width: 50px;
     border-radius: 50%;
 }
+
+tbody{
+  cursor: pointer;
+}

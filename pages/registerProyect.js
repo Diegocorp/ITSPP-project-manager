@@ -24,7 +24,6 @@ window.onload = function() {
 
 let proyectsList = [];
 
-
 const proyectName = document.querySelector("#proyectName");
 const releaseDate = document.querySelector("#releaseDate");
 const startDate = document.querySelector("#startDate");
@@ -233,6 +232,7 @@ const createBtn = $('#createBtn');
 const profileBtn = $('#profileBtn');
 
 if(localStorage.getItem('guest') !== null){
+  document.querySelector("#nickName").innerHTML = "Invitado";
   profileBtn.hide();
   createBtn.hide();
   

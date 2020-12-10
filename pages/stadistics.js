@@ -89,12 +89,35 @@ function countStatusProyects(proyects){
 
 }
 
-
-
 ipcRenderer.send('get-proyects');
 
 ipcRenderer.on('get-proyects', (e,arg) =>{
     const proyectsReceived = JSON.parse(arg);
     proyects = proyectsReceived;
     countStatusProyects(proyects);
+});
+
+// Guest user rights
+const createBtn = $('#createBtn');
+const profileBtn = $('#profileBtn');
+
+if(localStorage.getItem('guest') !== null){
+  profileBtn.hide();
+  createBtn.hide();
+  
+  $('#user-menu > .dropdown-item:not(:last)').each(function(){
+    $(this).hide();
+  });
+
+  $('.dropdown-divider').hide();
+}else{
+  profileBtn.show();
+  createBtn.show();
+}
+
+$(function() {
+  $(document).on('click', '#logoutBtn', function() {
+    localStorage.removeItem('guest');
+    console.log(localStorage.getItem('guest'));
+  })
 });

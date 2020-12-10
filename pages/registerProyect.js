@@ -222,3 +222,43 @@ ipcRenderer.on("update-proyect-success", (e, args) => {
     });
     alert("Proyecto Editado Exitosamente");
   });
+
+//Guest mode
+const createBtn = $('#createBtn');
+const profileBtn = $('#profileBtn');
+
+if(localStorage.getItem('guest') !== null){
+  profileBtn.hide();
+  createBtn.hide();
+  
+  $('.dropdown-menu > .dropdown-item:not(:last)').each(function(){
+    $(this).hide();
+  });
+
+  $('.dropdown-divider').hide();
+
+  if(localStorage.getItem('guest') !== null){
+    $('input').each(function(){
+      $(this).prop('disabled', true);
+    });
+    $('select').each(function(){
+      $(this).prop('disabled', true);
+    });
+    $('textarea').each(function(){
+      $(this).prop('disabled', true);
+    });
+    $('#content button').each(function(){
+      $(this).hide();
+    });
+  }
+}else{
+  profileBtn.show();
+  createBtn.show();
+}
+
+$(function() {
+  $(document).on('click', '#logoutBtn', function() {
+    localStorage.removeItem('guest');
+    console.log(localStorage.getItem('guest'));
+  })
+});

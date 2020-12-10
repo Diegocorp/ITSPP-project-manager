@@ -24,6 +24,7 @@ window.onload = function() {
 
 let proyectsList = [];
 
+const newProyectBtn = document.querySelector("#newProyectBtn");
 const proyectName = document.querySelector("#proyectName");
 const releaseDate = document.querySelector("#releaseDate");
 const startDate = document.querySelector("#startDate");
@@ -36,6 +37,13 @@ const enterpriseProject = document.querySelector("#enterpriseProject");
 const enterpriseContact = document.querySelector("#enterpriseContact");
 const firstNameContact = document.querySelector("#firstNameContact");
 const lastNameContact = document.querySelector("#lastNameContact");
+
+function newProyect(){
+  sessionStorage.removeItem('idToSend');
+  location.href='registerProyect.html';
+}
+
+
 
 proyectBtn.addEventListener("click", async e => {
     e.preventDefault();

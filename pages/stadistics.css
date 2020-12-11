@@ -19,10 +19,15 @@
 }
 
 .window-icon{
-  padding: .5rem 1rem;
+  position: relative;
+  padding: .75rem 1.25rem;
   margin: 0;
+  bottom: 2px;
   -webkit-app-region: no-drag;
 }
+::-webkit-scrollbar {         
+  display: none;       
+}  
 
 #close-btn:hover{
   background-color: #c00;

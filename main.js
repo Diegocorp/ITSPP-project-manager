@@ -31,7 +31,7 @@ function createWindow () {
   mainWindow.loadFile('pages/login.html')
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 }
 
 app.on('window-all-closed', function () {

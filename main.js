@@ -28,8 +28,10 @@ function createWindow () {
   mainWindow.setMenuBarVisibility(false);
   mainWindow.maximize();
   // and load the index.html of the app.
-  mainWindow.loadFile('pages/stadistics.html');
+  mainWindow.loadFile('pages/login.html')
 
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools()
 }
 
 app.on('window-all-closed', function () {

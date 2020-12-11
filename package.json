@@ -1,20 +1,19 @@
 {
-  "name": "electron-quick-start",
+  "name": "gestor-de-proyectos-institucionales",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "index.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/Diegocorp/ITSPP-project-manager",
   "keywords": [
     "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "ITSPP",
+    "proyect",
+    "manager"
   ],
-  "author": "GitHub",
+  "author": "Diegocorp",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^11.0.3"

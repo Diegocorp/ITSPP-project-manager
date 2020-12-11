@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Profile - Gestor de Proyectos Integradores</title>
+    <title>Gestor de Proyectos Institucionales</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -94,48 +94,46 @@
                         <div class="row">
                             <div class="col">
                                 <div class="card shadow mb-3">
+                                  <form class="needs-validation" novalidate>
                                     <div class="card-header py-3">
                                         <p class="text-primary m-0 font-weight-bold">Configuracion de Usuario</p>
                                     </div>
                                     <div class="card-body">
-                                        <form>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="username"><strong>Nombre de Usuario</strong></label><input id="userName" class="form-control" type="text" placeholder="Nombre de Usuario" name="username"></div>
+                                                    <div class="form-group"><label for="username"><strong>Nombre de Usuario</strong></label><input required='true' id="userName" class="form-control" type="text" placeholder="Nombre de Usuario" name="username"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="email"><strong>Correo Electronico</strong></label><input id="email" class="form-control" type="email" placeholder="Correo Electronico" name="email"></div>
+                                                    <div class="form-group"><label for="email"><strong>Correo Electronico</strong></label><input required='true' id="email" class="form-control" type="email" placeholder="Correo Electronico" name="email"></div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="first_name"><strong>Nombre(s)</strong></label><input id="firstName" class="form-control" type="text" placeholder="Nombre(s)" name="first_name"></div>
+                                                    <div class="form-group"><label for="first_name"><strong>Nombre(s)</strong></label><input required='true' id="firstName" class="form-control" type="text" placeholder="Nombre(s)" name="first_name"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="last_name"><strong>Apellido(s)</strong></label><input id="lastName" class="form-control" type="text" placeholder="Apellido(s)" name="last_name"></div>
+                                                    <div class="form-group"><label for="last_name"><strong>Apellido(s)</strong></label><input required='true' id="lastName" class="form-control" type="text" placeholder="Apellido(s)" name="last_name"></div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="first_name"><strong>Contraseña</strong></label><input id="password" class="form-control" type="text" placeholder="Contraseña" name="first_name"></div>
+                                                    <div class="form-group"><label for="first_name"><strong>Contraseña</strong></label><input required='true' id="password" class="form-control" type="password" placeholder="Contraseña" name="first_name"></div>
                                                 </div>
                                                 <div class="col">
-                                                    <div class="form-group"><label for="last_name"><strong>Repetir Contraseña</strong></label><input id="repeatPassword" class="form-control" type="text" placeholder="Repetir Contraseña" name="last_name"></div>
+                                                    <div class="form-group"><label for="last_name"><strong>Repetir Contraseña</strong></label><input required='true' id="repeatPassword" class="form-control" type="password" placeholder="Repetir Contraseña" name="last_name"></div>
                                                 </div>
                                             </div>
-                                        </form>
                                     </div>
                                     <div class="card-body">
-                                        <form>
-                                            <div class="form-group"><label for="address"><strong>Academia</strong></label><input id="academy" class="form-control" type="text" placeholder="Academia" name="address"></div>
+                                            <div class="form-group"><label for="address"><strong>Academia</strong></label><input required='true' id="academy" class="form-control" type="text" placeholder="Academia" name="address"></div>
                                             <div class="form-row">
                                                 <div class="col">
-                                                    <div class="form-group"><label for="city"><strong>Numero de Empleado</strong></label><input id="employeeNumber" class="form-control" type="text" placeholder="Numero de Empleado" name="city"></div>
+                                                    <div class="form-group"><label for="city"><strong>Numero de Empleado</strong></label><input required='true' id="employeeNumber" class="form-control" type="text" placeholder="Numero de Empleado" name="city"></div>
                                                 </div>
                                             </div>
-                                            <div class="form-group"><button id="profileBtn" onclick="updateProfile()" class="btn btn-primary btn-sm" type="button">Guardar Configuracion</button></div>
-                                        </form>
+                                            <div class="form-group"><button id="profileBtn" class="btn btn-primary btn-sm" type="submit">Guardar Configuracion</button></div>
                                     </div>
+                                  </form>
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Page Not Found - Gestor de Proyectos Integradores</title>
+    <title>Gestor de Proyectos Institucionales</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -51,162 +51,164 @@
             </nav>
             <div class="container-fluid">
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                    <h3 class="text-dark mb-0">Estadisticas</h3><button id="newProyectBtn" class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">Crear nuevo proyecto</button></div>
+                    <h3 class="text-dark mb-0">Gestor de Proyectos</h3><button id="newProyectBtn" onclick="newProyect()" class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">Crear nuevo proyecto</button></div>
                 <div class="row">
             </div>
-            <div class="col-xl-12 offset-xl-0">
-                <div class="card shadow mb-3">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Datos del proyecto</p>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group"><label for="username"><strong>Nombre del proyecto</strong></label><input id="proyectName" class="form-control" type="text" placeholder="nombre.proyecto" name="nombre.proyecto"></div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group"><label for="email"><strong>Fecha de liberacion</strong></label><input id="releaseDate" class="border rounded form-control" type="date" style="color: rgb(110,112,126);padding: 6px 12px;"></div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group"><label for="first_name"><strong>Periodo de Inicio</strong></label><input id="startDate" class="border rounded form-control" type="date" style="color: rgb(110,112,126);padding: 6px 12px;"></div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group"><label for="last_name"><strong>Periodo de conclusion</strong></label><input id="conclusionDate" class="border rounded form-control" type="date" style="color: rgb(110,112,126);padding: 6px 12px;"></div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group"><label for="first_name"><strong>Tipo de proyecto</strong></label><select id="typeProyect" class="border rounded form-control" style="color: rgb(110,112,126);padding: 6px 12px;"><optgroup label="Tipo de proyecto"><option value="Desarrollo de software" selected="">Desarrollo de software</option><option value="Paquete tecnologico">Paquete tecnologico</option><option value="Servicio tecnologico">Servicio tecnologico</option></optgroup></select></div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group"><label for="first_name"><strong>Objetivo del proyecto</strong></label><select id="objectiveProject" class="border rounded form-control" style="color: rgb(110,112,126);padding: 6px 12px;"><optgroup label="Objetivo del proyecto"><option value="Integrador" selected="">Integrador</option><option value="Titulacion">Titulacion</option></optgroup></select></div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group"><label for="last_name"><strong>Estatus del proyecto</strong><br></label><select id="statusProject" class="border rounded form-control" style="color: rgb(110,112,126);padding: 6px 12px;"><optgroup label="Estatus del proyecto"><option value="Cancelado" selected="">Cancelado</option><option value="En desarrollo">En desarrollo</option><option value="Finalizado">Finalizado</option><option value="Implementado">Implementado</option></optgroup></select></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
+            <form class="needs-validation" novalidate>
+                <div class="col-xl-12 offset-xl-0">
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Datos del proyecto</p>
+                        </div>
+                        <div class="card-body">
+                            <form>
                                 <div class="form-row">
                                     <div class="col">
-                                        <div class="form-group"><label for="city"><strong>Comentarios u Observaciones</strong></label><textarea id="projectComment" class="border rounded form-control" style="padding: 6px 12px;color: rgb(110,112,126);height: 100px;"></textarea></div>
+                                        <div class="form-group"><label for="username"><strong>Nombre del proyecto</strong></label><input required='true' id="proyectName" class="form-control" type="text" placeholder="nombre.proyecto" name="nombre.proyecto"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group"><label for="email"><strong>Fecha de liberacion</strong></label><input required='true' id="releaseDate" class="border rounded form-control" type="date" style="color: rgb(110,112,126);padding: 6px 12px;"></div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="card shadow mb-3">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Datos de la empresa</p>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group"><label for="username"><strong>Nombre de la empresa</strong></label><input id="enterpriseProject" class="form-control" type="text" placeholder="user.name" name="username"></div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group"><label for="email"><strong>Nombre del Contacto de la Empresa</strong><br></label><input id="enterpriseContact" class="form-control" type="email" placeholder="user@example.com" name="email"></div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="form-group"><label for="first_name"><strong>Nombre(s)</strong></label><input id="firstNameContact" class="form-control" type="text" placeholder="John" name="first_name"></div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-group"><label for="last_name"><strong>Apellido(s)</strong></label><input id="lastNameContact" class="form-control" type="text" placeholder="Doe" name="last_name"></div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- Add in form section  -->
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Datos de los alumnos participantes</p>
-                    </div>
-                    <div class="card-body">
-                      <div class="dynamic-wrap-student">
-                        <form role="form" autocomplete="off">
-                          <div class="entry-student input-group">
-                            <div class="form-row"  style="width: 100%;">
-                                <div class="col">
-                                    <div class="form-group">
-                                      <label for="city">
-                                        <strong>Nombre del Alumno Participante</strong>
-                                      </label>
-                                      <input class="border rounded form-control studentName" type="text" placeholder="nombre.alumno" name="city">
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group"><label for="first_name"><strong>Periodo de Inicio</strong></label><input required='true' id="startDate" class="border rounded form-control" type="date" style="color: rgb(110,112,126);padding: 6px 12px;"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group"><label for="last_name"><strong>Periodo de conclusion</strong></label><input required='true' id="conclusionDate" class="border rounded form-control" type="date" style="color: rgb(110,112,126);padding: 6px 12px;"></div>
                                     </div>
                                 </div>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group"><label for="first_name"><strong>Tipo de proyecto</strong></label><select id="typeProyect" class="border rounded form-control" style="color: rgb(110,112,126);padding: 6px 12px;"><optgroup label="Tipo de proyecto"><option value="Desarrollo de software" selected="">Desarrollo de software</option><option value="Paquete tecnologico">Paquete tecnologico</option><option value="Servicio tecnologico">Servicio tecnologico</option></optgroup></select></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group"><label for="first_name"><strong>Objetivo del proyecto</strong></label><select id="objectiveProject" class="border rounded form-control" style="color: rgb(110,112,126);padding: 6px 12px;"><optgroup label="Objetivo del proyecto"><option value="Integrador" selected="">Integrador</option><option value="Titulacion">Titulacion</option></optgroup></select></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group"><label for="last_name"><strong>Estatus del proyecto</strong><br></label><select id="statusProject" class="border rounded form-control" style="color: rgb(110,112,126);padding: 6px 12px;"><optgroup label="Estatus del proyecto"><option value="Cancelado" selected="">Cancelado</option><option value="En desarrollo">En desarrollo</option><option value="Finalizado">Finalizado</option><option value="Implementado">Implementado</option></optgroup></select></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col">
+                                            <div class="form-group"><label for="city"><strong>Comentarios u Observaciones</strong></label><textarea required='true' id="projectComment" class="border rounded form-control" style="padding: 6px 12px;color: rgb(110,112,126);height: 100px;"></textarea></div>
+                                        </div>
+                                    </div>
+                                </div>
+<!--                             </form>
+                        </div>
+                    </div>
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Datos de la empresa</p>
+                        </div>
+                        <div class="card-body">
+                            <form> -->
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group"><label for="username"><strong>Nombre de la empresa</strong></label><input required='true' id="enterpriseProject" class="form-control" type="text" placeholder="user.name" name="username"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group"><label for="email"><strong>Correo electronico de la empresa</strong><br></label><input required='true' id="enterpriseContact" class="form-control" type="email" placeholder="user@example.com" name="email"></div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col">
+                                        <div class="form-group"><label for="first_name"><strong>Nombre(s)</strong></label><input required='true' id="firstNameContact" class="form-control" type="text" placeholder="John" name="first_name"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group"><label for="last_name"><strong>Apellido(s)</strong></label><input required='true' id="lastNameContact" class="form-control" type="text" placeholder="Doe" name="last_name"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Add in form section  -->
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Datos de los alumnos participantes</p>
+                        </div>
+                        <div class="card-body">
+                        <div class="dynamic-wrap-student">
+                            <form role="form" autocomplete="off">
+                            <div class="entry-student input-group">
+                                <div class="form-row"  style="width: 100%;">
+                                    <div class="col">
+                                        <div class="form-group">
+                                        <label for="city">
+                                            <strong>Nombre del Alumno Participante</strong>
+                                        </label>
+                                        <input required='true' class="border rounded form-control studentName" type="text" placeholder="nombre.alumno" name="city">
+                                        </div>
+                                    </div>
 
-                                <div class="col">
+                                    <div class="col">
+                                        <div class="form-group">
+                                        <label for="city">
+                                            <strong>Numero de Control</strong>
+                                        </label>
+                                        <input required='true' class="form-control studentId" type="text" placeholder="numero.control" name="city">
+                                        </div>
+                                    </div>
+                                    <div class="col">
                                     <div class="form-group">
-                                      <label for="city">
-                                        <strong>Numero de Control</strong>
-                                      </label>
-                                      <input class="form-control studentId" type="text" placeholder="numero.control" name="city">
-                                    </div>
+                                        <div class="input-group-btn" style="margin-top: 2em;">
+                                        <button class="btn btn-success btn-add-student" type="button">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                        </div>
+                                    </div>                                  
+                                    </div> 
                                 </div>
-                                <div class="col">
-                                  <div class="form-group">
-                                    <div class="input-group-btn" style="margin-top: 2em;">
-                                      <button class="btn btn-success btn-add-student" type="button">
-                                        <i class="fas fa-plus"></i>
-                                      </button>
-                                    </div>
-                                  </div>                                  
-                                </div> 
                             </div>
-                          </div>
-                        </form>
-                      </div>
+                            </form>
+                        </div>
+                        </div>
                     </div>
-                </div>
-                <!-- End of add in form section -->
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Datos de los maestros participantes</p>
-                    </div>
-                    <div class="card-body">
-                      <div class="dynamic-wrap-teacher">
-                        <form role="form" autocomplete="off">
-                          <div class="entry-teacher input-group">
-                            <div class="form-row" style="width: 100%;">
-                                <div class="col-sm">
-                                    <div class="form-group"><label for="city"><strong>Nombre del Maestro Participante</strong><br></label>
-                                      <input class="border rounded form-control teacherName" type="text" placeholder="nombre.maestro" name="city"></div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="form-group"><label for="city"><strong>Numero de Empleado</strong></label>
-                                      <input class="form-control teacherId" type="text" placeholder="numero.empleado" name="city"></div>
-                                </div>
-                                <div class="col-sm">
-                                    <div class="form-group"><label for="city"><strong>Materia del Maestro</strong><br></label>
-                                      <input class="border rounded form-control teacherSubject" type="text" placeholder="materia.maestro" name="city"></div>
-                                </div>
-
-                                <div class="col-sm">
-                                  <div class="form-group">
-                                    <div class="input-group-btn" style="margin-top: 2em;">
-                                      <button class="btn btn-success btn-add-teacher" type="button">
-                                        <i class="fas fa-plus"></i>
-                                      </button>
+                    <!-- End of add in form section -->
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Datos de los maestros participantes</p>
+                        </div>
+                        <div class="card-body">
+                        <div class="dynamic-wrap-teacher">
+                            <form role="form" autocomplete="off">
+                            <div class="entry-teacher input-group">
+                                <div class="form-row" style="width: 100%;">
+                                    <div class="col-sm">
+                                        <div class="form-group"><label for="city"><strong>Nombre del Maestro Participante</strong><br></label>
+                                        <input required='true' class="border rounded form-control teacherName" type="text" placeholder="nombre.maestro" name="city"></div>
                                     </div>
-                                  </div>                                  
-                                </div> 
-                            </div>                            
-                          </div>
-                        </form>
-                      </div>                      
-                    </div>    
+                                    <div class="col-sm">
+                                        <div class="form-group"><label for="city"><strong>Numero de Empleado</strong></label>
+                                        <input required='true' class="form-control teacherId" type="text" placeholder="numero.empleado" name="city"></div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group"><label for="city"><strong>Materia del Maestro</strong><br></label>
+                                        <input required='true' class="border rounded form-control teacherSubject" type="text" placeholder="materia.maestro" name="city"></div>
+                                    </div>
+
+                                    <div class="col-sm">
+                                    <div class="form-group">
+                                        <div class="input-group-btn" style="margin-top: 2em;">
+                                        <button class="btn btn-success btn-add-teacher" type="button">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                        </div>
+                                    </div>                                  
+                                    </div> 
+                                </div>                            
+                            </div>
+                            </form>
+                        </div>                      
+                        </div>    
+                    </div>
+                    <div class="form-group">
+                    <button id="proyectBtn" class="btn btn-primary btn-sm" type="submit">Guardar datos</button><button onclick=deleteProyect() id="deleteBtn" class="btn btn-danger btn-sm" type="submit">Eliminar Proyecto</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <button id="proyectBtn" class="btn btn-primary btn-sm" type="submit">Guardar datos</button><button onclick=deleteProyect() id="deleteBtn" class="btn btn-danger btn-sm" type="submit">Eliminar Proyecto</button>
-                </div>
-            </div>
+            </form>
         </div>
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">

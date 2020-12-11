@@ -43,8 +43,6 @@ function newProyect(){
   location.href='registerProyect.html';
 }
 
-localStorage.getItem('guest') ? $('#newProyectBtn').hide() : null;
-
 (function() {
   'use strict';
   window.addEventListener('load', function() {

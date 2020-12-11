@@ -44,9 +44,6 @@ function countStatusProyects(proyects){
             st++;
         }
     })
-    console.log("dds",dds);
-    console.log("pt",pt);
-    console.log("st",st);
     var ctxD = document.getElementById("doughnutChart").getContext('2d');
     var myLineChart = new Chart(ctxD, {
     type: 'doughnut',

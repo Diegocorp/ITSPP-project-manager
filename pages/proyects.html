@@ -10,10 +10,29 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="proyects.css">
     <link rel="stylesheet" type="text/css" href="assets/DataTables/datatables.min.css"/>
+    <link rel="stylesheet" href="WindowFrame.css">
     <script>window.$ = window.jQuery = require('jquery');</script>
 </head>
 
 <body id="page-top">
+  <div id="window-bar">
+    <div id="minimize-btn">
+      <a class="btn btn-primary btn-sm window-icon  btn-ripple" role="button" href="#">
+        <i class="fas fa-minus fa-medium text-white-50"></i>
+      </a>
+    </div>
+    <div id="restore-btn">
+      <a class="btn btn-primary btn-sm window-icon  btn-ripple" role="button" href="#">
+        <i class="fas fa-window-restore fa-medium text-white-50"></i>
+      </a>
+    </div>
+    <div >
+      <a id="close-btn" class="btn btn-primary btn-sm window-icon btn-ripple" role="button" href="#">
+        <i class="fas fa-times fa-medium text-white-50"></i>
+      </a>
+    </div>
+  </div>
+
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
@@ -92,6 +111,7 @@
     <script type="text/javascript" src="assets/DataTables/datatables.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="proyects.js"></script>
+    <script src="WindowFrame.js"></script>
 </body>
 
 </html>
